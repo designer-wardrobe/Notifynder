@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - vendor:/app/vendor
+      - composer-cache:/root/.composer
+    command: sh -c "composer install --no-interaction --prefer-dist && vendor/bin/phpunit"
+
+volumes:
+  vendor:
+  composer-cache:

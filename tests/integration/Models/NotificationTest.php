@@ -7,7 +7,7 @@ class NotificationTest extends NotifynderTestCase
     public function testFillablesEmpty()
     {
         $notification = new Notification();
-        $this->assertInternalType('array', $notification->getFillable());
+        $this->assertIsArray($notification->getFillable());
         $this->assertSame([
             'to_id',
             'to_type',
@@ -27,7 +27,7 @@ class NotificationTest extends NotifynderTestCase
         $config = app('notifynder.config');
         $config->set('additional_fields.fillable', ['fillable_field']);
         $notification = new Notification();
-        $this->assertInternalType('array', $notification->getFillable());
+        $this->assertIsArray($notification->getFillable());
         $this->assertSame([
             'to_id',
             'to_type',
@@ -48,7 +48,7 @@ class NotificationTest extends NotifynderTestCase
         $config = app('notifynder.config');
         $config->set('additional_fields.required', ['required_field']);
         $notification = new Notification();
-        $this->assertInternalType('array', $notification->getFillable());
+        $this->assertIsArray($notification->getFillable());
         $this->assertSame([
             'to_id',
             'to_type',
@@ -70,7 +70,7 @@ class NotificationTest extends NotifynderTestCase
         $config->set('additional_fields.fillable', ['fillable_field']);
         $config->set('additional_fields.required', ['required_field']);
         $notification = new Notification();
-        $this->assertInternalType('array', $notification->getFillable());
+        $this->assertIsArray($notification->getFillable());
         $this->assertSame([
             'to_id',
             'to_type',

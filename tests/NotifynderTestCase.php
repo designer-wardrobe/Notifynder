@@ -27,7 +27,7 @@ abstract class NotifynderTestCase extends OrchestraTestCase
         ];
     }
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $artisan = $this->app->make('Illuminate\Contracts\Console\Kernel');
@@ -79,7 +79,7 @@ abstract class NotifynderTestCase extends OrchestraTestCase
         }
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         $resolver = app('notifynder.resolver.model');
         $resolver->setTable(Notification::class, 'notifications');
@@ -90,6 +90,7 @@ abstract class NotifynderTestCase extends OrchestraTestCase
             NotificationCategory::truncate();
             app('db')->statement('SET FOREIGN_KEY_CHECKS=1;');
         }
+        parent::tearDown();
     }
 
     protected function getApplicationTimezone($app)
@@ -173,10 +174,4 @@ abstract class NotifynderTestCase extends OrchestraTestCase
         return ($parts[0].'.'.$parts[1]) * 1;
     }
 
-    public function __call($name, $arguments)
-    {
-        if ($name == 'expectException') {
-            $this->setExpectedException($arguments[0]);
-        }
-    }
 }

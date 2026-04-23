@@ -9,7 +9,7 @@ class BuilderNotificationTest extends NotifynderTestCase
         $notification = new Notification();
         $notification->set('foo', 'bar');
 
-        $this->assertInternalType('array', $notification->attributes());
+        $this->assertIsArray($notification->attributes());
         $this->assertCount(1, $notification->attributes());
         $this->assertArrayHasKey('foo', $notification->attributes());
         $this->assertTrue($notification->has('foo'));
@@ -32,13 +32,13 @@ class BuilderNotificationTest extends NotifynderTestCase
         $notification->set('extra', ['foo' => 'bar']);
 
         $this->assertTrue($notification->isValid());
-        $this->assertInternalType('array', $notification->toArray());
-        $this->assertInternalType('array', $notification->toArray()['extra']);
-        $this->assertInternalType('array', $notification->toDbArray());
-        $this->assertInternalType('string', $notification->toDbArray()['extra']);
+        $this->assertIsArray($notification->toArray());
+        $this->assertIsArray($notification->toArray()['extra']);
+        $this->assertIsArray($notification->toDbArray());
+        $this->assertIsString($notification->toDbArray()['extra']);
         $this->assertJson($notification->toJson());
-        $this->assertInternalType('string', $notification->toString());
-        $this->assertInternalType('string', (string) $notification);
+        $this->assertIsString($notification->toString());
+        $this->assertIsString((string) $notification);
     }
 
     public function testOverloaded()

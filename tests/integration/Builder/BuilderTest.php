@@ -64,7 +64,7 @@ class BuilderTest extends NotifynderTestCase
         $this->assertInstanceOf(Notification::class, $notification);
 
         $this->assertSame('http://notifynder.info', $notification->url);
-        $this->assertInternalType('array', $notification->extra);
+        $this->assertIsArray($notification->extra);
         $this->assertCount(1, $notification->extra);
         $this->assertSame('bar', $notification->extra['foo']);
         $this->assertInstanceOf(Carbon::class, $notification->expires_at);
@@ -87,7 +87,7 @@ class BuilderTest extends NotifynderTestCase
 
         $this->assertInstanceOf(Notification::class, $notification);
 
-        $this->assertInternalType('array', $notification->extra);
+        $this->assertIsArray($notification->extra);
         $this->assertCount(2, $notification->extra);
         $this->assertSame('bar', $notification->extra['foo']);
         $this->assertSame('world', $notification->extra['hello']);
@@ -110,7 +110,7 @@ class BuilderTest extends NotifynderTestCase
 
         $this->assertInstanceOf(Notification::class, $notification);
 
-        $this->assertInternalType('array', $notification->extra);
+        $this->assertIsArray($notification->extra);
         $this->assertCount(1, $notification->extra);
         $this->assertSame('world', $notification->extra['hello']);
     }
@@ -124,7 +124,7 @@ class BuilderTest extends NotifynderTestCase
             ->to(2)
             ->getNotifications();
 
-        $this->assertInternalType('array', $notifications);
+        $this->assertIsArray($notifications);
         $this->assertCount(1, $notifications);
 
         $this->assertInstanceOf(Notification::class, $notifications[0]);
@@ -164,7 +164,7 @@ class BuilderTest extends NotifynderTestCase
                 ->to($data);
         })->getNotifications();
 
-        $this->assertInternalType('array', $notifications);
+        $this->assertIsArray($notifications);
         $this->assertCount(count($datas), $notifications);
 
         foreach ($notifications as $index => $notification) {

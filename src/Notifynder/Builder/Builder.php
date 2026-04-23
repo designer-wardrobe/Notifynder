@@ -280,7 +280,7 @@ class Builder implements ArrayAccess
      * @param string $offset
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $this->notification->offsetExists($offset);
     }
@@ -289,7 +289,7 @@ class Builder implements ArrayAccess
      * @param string $offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->notification->offsetGet($offset);
     }
@@ -298,7 +298,7 @@ class Builder implements ArrayAccess
      * @param string $offset
      * @param mixed $value
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->notification->offsetSet($offset, $value);
     }
@@ -306,7 +306,7 @@ class Builder implements ArrayAccess
     /**
      * @param string $offset
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         $this->notification->offsetUnset($offset);
     }

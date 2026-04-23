@@ -11,6 +11,6 @@ class HelpersTest extends NotifynderTestCase
 
     public function testNotifynderConfigGet()
     {
-        $this->assertInternalType('bool', notifynder_config('polymorphic'));
+        $this->assertIsBool(notifynder_config('polymorphic'));
     }
 }

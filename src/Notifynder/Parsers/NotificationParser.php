@@ -2,6 +2,8 @@
 
 namespace Fenos\Notifynder\Parsers;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Fenos\Notifynder\Models\NotificationCategory;
 use Fenos\Notifynder\Exceptions\ExtraParamsException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -37,7 +39,7 @@ class NotificationParser
         $specialValues = $this->getValues($text);
         if (count($specialValues) > 0) {
             $specialValues = array_filter($specialValues, function ($value) use ($notification) {
-                return ((is_array($notification) && isset($notification[$value])) || (is_object($notification) && isset($notification->$value))) || starts_with($value, ['extra.', 'to.', 'from.']);
+                return ((is_array($notification) && isset($notification[$value])) || (is_object($notification) && isset($notification->$value))) || Str::startsWith($value, ['extra.', 'to.', 'from.']);
             });
 
             foreach ($specialValues as $replacer) {
@@ -106,7 +108,7 @@ class NotificationParser
                 continue;
             }
             if (is_array($object) && array_key_exists($segment, $object)) {
-                $object = array_get($object, $segment, $default);
+                $object = Arr::get($object, $segment, $default);
                 continue;
             }
 

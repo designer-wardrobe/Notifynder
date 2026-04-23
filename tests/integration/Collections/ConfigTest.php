@@ -7,25 +7,25 @@ class ConfigTest extends NotifynderTestCase
     public function testIsPolymorphic()
     {
         $config = app('notifynder.config');
-        $this->assertInternalType('bool', $config->isPolymorphic());
+        $this->assertIsBool($config->isPolymorphic());
     }
 
     public function testIsStrict()
     {
         $config = app('notifynder.config');
-        $this->assertInternalType('bool', $config->isStrict());
+        $this->assertIsBool($config->isStrict());
     }
 
     public function testIsTranslated()
     {
         $config = app('notifynder.config');
-        $this->assertInternalType('bool', $config->isTranslated());
+        $this->assertIsBool($config->isTranslated());
     }
 
     public function testGetNotifiedModel()
     {
         $config = app('notifynder.config');
-        $this->assertInternalType('string', $config->getNotifiedModel());
+        $this->assertIsString($config->getNotifiedModel());
         $this->assertSame(User::class, $config->getNotifiedModel());
     }
 
@@ -43,7 +43,7 @@ class ConfigTest extends NotifynderTestCase
         $config = app('notifynder.config');
         $config->set('additional_fields.fillable', ['fillable_field']);
         $config->set('additional_fields.required', ['required_field']);
-        $this->assertInternalType('array', $config->getAdditionalFields());
+        $this->assertIsArray($config->getAdditionalFields());
         $this->assertCount(2, $config->getAdditionalFields());
         $this->assertSame(['required_field', 'fillable_field'], $config->getAdditionalFields());
     }
@@ -52,7 +52,7 @@ class ConfigTest extends NotifynderTestCase
     {
         $config = app('notifynder.config');
         $config->set('additional_fields.fillable', ['fillable_field']);
-        $this->assertInternalType('array', $config->getAdditionalFields());
+        $this->assertIsArray($config->getAdditionalFields());
         $this->assertSame(['fillable_field'], $config->getAdditionalFields());
     }
 
@@ -60,28 +60,28 @@ class ConfigTest extends NotifynderTestCase
     {
         $config = app('notifynder.config');
         $config->set('additional_fields.required', ['required_field']);
-        $this->assertInternalType('array', $config->getAdditionalFields());
+        $this->assertIsArray($config->getAdditionalFields());
         $this->assertSame(['required_field'], $config->getAdditionalFields());
     }
 
     public function testGetAdditionalFieldsEmpty()
     {
         $config = app('notifynder.config');
-        $this->assertInternalType('array', $config->getAdditionalFields());
+        $this->assertIsArray($config->getAdditionalFields());
         $this->assertSame([], $config->getAdditionalFields());
     }
 
     public function testGetAdditionalRequiredFields()
     {
         $config = app('notifynder.config');
-        $this->assertInternalType('array', $config->getAdditionalRequiredFields());
+        $this->assertIsArray($config->getAdditionalRequiredFields());
         $this->assertSame([], $config->getAdditionalRequiredFields());
     }
 
     public function testGetTranslationDomain()
     {
         $config = app('notifynder.config');
-        $this->assertInternalType('string', $config->getTranslationDomain());
+        $this->assertIsString($config->getTranslationDomain());
         $this->assertSame('notifynder', $config->getTranslationDomain());
     }
 
@@ -107,7 +107,7 @@ class ConfigTest extends NotifynderTestCase
     public function testGetOverloaded()
     {
         $config = app('notifynder.config');
-        $this->assertInternalType('bool', $config->polymorphic);
+        $this->assertIsBool($config->polymorphic);
     }
 
     public function testSetOverloaded()
@@ -115,7 +115,7 @@ class ConfigTest extends NotifynderTestCase
         $config = app('notifynder.config');
 
         $config->polymorphic = true;
-        $this->assertInternalType('bool', $config->polymorphic);
+        $this->assertIsBool($config->polymorphic);
         $this->assertTrue($config->get('polymorphic'));
     }
 }

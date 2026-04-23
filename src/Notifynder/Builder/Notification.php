@@ -128,7 +128,7 @@ class Notification implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
     /**
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }
@@ -189,7 +189,7 @@ class Notification implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
      * @param string $offset
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $this->has($offset);
     }
@@ -198,7 +198,7 @@ class Notification implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
      * @param string $offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->get($offset);
     }
@@ -207,7 +207,7 @@ class Notification implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
      * @param string $offset
      * @param mixed $value
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->set($offset, $value);
     }
@@ -215,7 +215,7 @@ class Notification implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
     /**
      * @param string $offset
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         Arr::forget($this->attributes, $offset);
     }

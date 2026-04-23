@@ -54,7 +54,7 @@ class NotifynderManagerTest extends NotifynderTestCase
                 ->to($data);
         })->getNotifications();
 
-        $this->assertInternalType('array', $notifications);
+        $this->assertIsArray($notifications);
         $this->assertCount(count($datas), $notifications);
     }
 
